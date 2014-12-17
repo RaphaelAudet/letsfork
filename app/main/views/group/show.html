@@ -1,0 +1,36 @@
+<:Title>
+  {{ _title }}
+
+<:Body>
+  {{ if model && model.persistor && state == :loaded }}
+    <h1>{{ _name }}</h1>
+    <h2>Group Users</h2>
+    {{ model._users.each do |user| }}
+      <:users group="{{ _id }}" />
+    {{ end }}
+
+    <h2>Add User</h2>
+
+      <table class="table user-table">
+        {{ _users.each do |user| }}
+            <td class="{{ if user._complete }}complete{{ end }}">{{ user._email }}</td>
+          </tr>
+        {{ end }}
+      </table>
+
+      <form e-submit="add_user" role="form">
+        <div class="form-group">
+           <label>Add User (email):</label>
+           <input class="form-control" type="text" value="{{ page._new_user._email }}" />
+           <button>Add</button>
+        </div>
+      </form>
+
+    <h2>All User</h2>
+    <:users/>
+
+
+
+  {{ else }}
+    <p>Loading... {{ model.html_inspect }}</p>
+  {{ end }}

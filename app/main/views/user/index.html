@@ -1,0 +1,15 @@
+<:Title>
+  Users
+
+<:Body>
+  <h1>My Users</h1>
+
+  <ul>
+  {{ _users.each do |user| }}
+    <li>{{ user._id }} {{user._name}} {{user._email}}
+      <a href="/user/{{ user._id }}">show</a>
+    </li>
+    <:users:show user="{{ user }}" />
+  </ul>
+
+  {{ end }}

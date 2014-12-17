@@ -1,0 +1,21 @@
+<:Title>
+  Groups
+
+<:Body>
+  <h1>My Groups</h1>
+
+  <p>
+    <a href="/group/new">New Group</a>
+  </p>
+
+  {{ _groups.each do |group| }}
+    <h2><a href="/group/{{ group._id }}">{{ group._name }}</a></h2>
+    <p>
+      <a href="/group/{{ group._id }}/edit">edit</a> |
+      <a e-click="_groups.delete_at(index)">remove</a>
+    </p>
+
+    <p>{{ group._body }}</p>
+    <:group:_list_item group="{{ group }}" >
+
+  {{ end }}

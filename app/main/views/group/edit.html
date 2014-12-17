@@ -1,0 +1,15 @@
+<:Title>
+  Edit {{ _title }}
+
+<:Body>
+  {{ if state != :loaded }}
+    <h1>Loading...</h1>
+  {{ else }}
+    <h1>{{ _name }}</h1>
+
+    <form e-submit="save" role="form">
+      <:fields:text value="{{ _name }}" label="Name:" />
+
+      <button>Save</button>
+    </form>
+  {{ end }}
